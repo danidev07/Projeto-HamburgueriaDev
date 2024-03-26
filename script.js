@@ -11,13 +11,11 @@ const addressWarn = document.getElementById('address-warn');
 
 let cart = [];
 
-//Abrir o modal do carrinho
+
 cartBtn.addEventListener('click', function(){
   cartModal.style.display = 'flex'
   updateCartModal();
 })
-
-//Fechar o modal quando clicar fora
 
 cartModal.addEventListener('click', function(event){
   if (event.target === cartModal){
@@ -42,8 +40,6 @@ menu.addEventListener('click', function(event){
   }
 })
 
-// Função para adicionar no carrinho
-
 function addToCart(name, price){
   const existingItem = cart.find(item => item.name === name);
 
@@ -59,11 +55,7 @@ function addToCart(name, price){
   }
 
   updateCartModal();
-
 }
-
-
-// Atualiza o carrinho
 
 function updateCartModal(){
   cartItemsContainer.innerHTML = '';
@@ -85,7 +77,6 @@ function updateCartModal(){
           <button class='remove-from-cart-btn' data-name='${item.name}'>Remover</button>
         </div>
         
-    
       </div>
     
     `
@@ -103,8 +94,6 @@ function updateCartModal(){
   cartCounter.innerHTML = cart.length;
 
 }
-
-// Função para remover item do carrinho
 
 cartItemsContainer.addEventListener('click', function(event){
   if(event.target.classList.contains('remove-from-cart-btn')){
@@ -137,7 +126,7 @@ addressInput.addEventListener('input', function(event){
   }
 
 })
-// Finalizar pedido
+
 checkoutBtn.addEventListener('click', function(){
 
   const isOpen = checkRestaurantOpen();
@@ -165,8 +154,6 @@ checkoutBtn.addEventListener('click', function(){
     return;
   }
 
-  //Enviar o pedido para o whatsapp
-
   const cartItems = cart.map((item)=>{
     return(`${item.name} Quantidade: (${item.quantity}) Preço: R$${item.price} |`)
 
@@ -181,11 +168,6 @@ checkoutBtn.addEventListener('click', function(){
   updateCartModal();
 
 })
-
-
-
-
-// Verificar a hora e manipular o card horario
 
 function checkRestaurantOpen(){
   const data = new Date();
@@ -202,7 +184,5 @@ if (isOpen){
 }else{
   spanItem.classList.remove('bg-green-600');
   spanItem.classList.add('bg-red-500');
-
-
 }
 
